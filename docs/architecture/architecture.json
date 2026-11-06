@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "project": "ODIDE visual workspace",
+  "release": "visual-prototype",
+  "sourceOfTruth": {
+    "currentBrowserDraft": "lib/storage.ts",
+    "workRules": "lib/work-model.ts",
+    "proposedExamples": "lib/seed.ts",
+    "liveBusinessRecords": "Notion — not connected"
+  },
+  "modules": [
+    {"id":"model","path":"lib/work-model.ts","owns":["WorkItem","hierarchy validation","dependency validation","verified completion","blockers","ready priorities","task progress"],"consumers":["components/command-map.tsx","components/task-panel.tsx","components/odide-app.tsx","components/workspace-views.tsx","lib/storage.ts"],"checks":["tests/domain.test.ts"]},
+    {"id":"storage","path":"lib/storage.ts","owns":["versioned browser draft","revision conflicts","import/export validation","recovery failure semantics"],"consumers":["components/odide-app.tsx"],"checks":["tests/storage.test.ts"]},
+    {"id":"layout","path":"lib/graph-layout.ts","owns":["visible graph projection","ELK adapter"],"consumers":["components/command-map.tsx"],"checks":["browser: expand/collapse and mode switch"]},
+    {"id":"seed","path":"lib/seed.ts","owns":["public-safe proposed roadmap","source references"],"consumers":["components/odide-app.tsx"],"checks":["workspace schema validation","source review"]},
+    {"id":"orchestration","path":"components/odide-app.tsx","owns":["selected stable ID","view state","edit orchestration","browser hydration","import confirmation"],"consumers":["app/page.tsx"],"checks":["browser: save and reload","browser: search reveals ancestors"]}
+  ],
+  "laterNotImplemented":["Notion adapter","durable sync","payment outcomes","agent execution","team roles"],
+  "trustBoundary":"The browser holds local draft content only. No integration credentials or external-action endpoint exists."
+}

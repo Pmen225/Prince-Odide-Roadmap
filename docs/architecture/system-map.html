@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ODIDE · System map</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #101419;
+        --panel: #1b222a;
+        --line: #45556a;
+        --ink: #e9edf3;
+        --muted: #a4adba;
+        --accent: #83b5ff;
+        --green: #75c4a7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 48px;
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      main {
+        max-width: 1120px;
+        margin: auto;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: 40px;
+        line-height: 1.2;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+        margin: 14px 0;
+      }
+      p {
+        color: var(--muted);
+        max-width: 760px;
+      }
+      svg {
+        width: 100%;
+        height: auto;
+        margin: 25px 0;
+      }
+      rect {
+        fill: var(--panel);
+        stroke: var(--line);
+      }
+      text {
+        fill: var(--ink);
+        font:
+          16px system-ui,
+          sans-serif;
+      }
+      .small {
+        font-size: 12px;
+        fill: var(--muted);
+      }
+      .heading {
+        font-weight: 600;
+      }
+      .connector {
+        fill: none;
+        stroke: var(--line);
+        stroke-width: 1.7;
+        marker-end: url(#arrow);
+      }
+      .accent {
+        stroke: var(--accent);
+      }
+      .accent-text {
+        fill: var(--accent);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      @media (max-width: 650px) {
+        body {
+          padding: 24px;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        .diagram {
+          overflow: auto;
+        }
+        svg {
+          min-width: 800px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">ODIDE / Engineering map / Increment 1</div>
+      <h1>One set of rules. Connected views.</h1>
+      <p>
+        Completion, blockers and priorities have one owner. The interface reads
+        those rules. Browser drafts are local; no Notion sync or agent execution
+        is connected.
+      </p>
+      <div class="diagram">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1080 620"
+          role="img"
+          aria-labelledby="map-title map-desc"
+        >
+          <title id="map-title">ODIDE prototype module ownership</title>
+          <desc id="map-desc">
+            The domain model is consumed by the workspace controller, map, task
+            inspector and Today view. The controller saves and loads through
+            validated browser storage.
+          </desc>
+          <defs>
+            <marker
+              id="arrow"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="6"
+              markerHeight="6"
+              orient="auto-start-reverse"
+            >
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#64758a" />
+            </marker>
+          </defs>
+          <path
+            class="connector"
+            d="M310 290 H360 Q368 290 368 282 V113 Q368 105 376 105 H435"
+          />
+          <path class="connector" d="M310 310 H435" />
+          <path
+            class="connector"
+            d="M310 330 H352 Q360 330 360 338 V507 Q360 515 368 515 H435"
+          />
+          <path class="connector" d="M675 105 H750" />
+          <path class="connector" d="M675 310 H750" />
+          <path class="connector" d="M310 350 H328 Q336 350 336 358 V584 Q336 592 344 592 H887 Q895 592 895 584 V570" />
+          <g>
+            <rect
+              x="35"
+              y="240"
+              width="275"
+              height="140"
+              rx="16"
+              class="accent"
+            />
+            <text x="57" y="269" class="small accent-text">DOMAIN OWNER</text>
+            <text x="57" y="303" class="heading">Work model</text>
+            <text x="57" y="331" class="small">
+              Verification · blockers · graph rules
+            </text>
+            <text x="57" y="352" class="small">lib/work-model.ts</text>
+          </g>
+          <g>
+            <rect x="435" y="50" width="240" height="110" rx="14" />
+            <text x="456" y="81" class="heading">Workspace controller</text>
+            <text x="456" y="108" class="small">
+              Validated edits and imports
+            </text>
+            <text x="456" y="131" class="small">components/odide-app.tsx</text>
+          </g>
+          <g>
+            <rect x="750" y="50" width="290" height="110" rx="14" />
+            <text x="772" y="81" class="heading">Browser draft storage</text>
+            <text x="772" y="108" class="small">
+              Revision checks · JSON validation
+            </text>
+            <text x="772" y="131" class="small">lib/storage.ts</text>
+          </g>
+          <g>
+            <rect x="435" y="255" width="240" height="110" rx="14" />
+            <text x="456" y="286" class="heading">Map projection</text>
+            <text x="456" y="313" class="small">
+              Visible work · layout · stable IDs
+            </text>
+            <text x="456" y="336" class="small">lib/graph-layout.ts</text>
+          </g>
+          <g>
+            <rect x="750" y="255" width="290" height="110" rx="14" />
+            <text x="772" y="286" class="heading">Connected map</text>
+            <text x="772" y="313" class="small">
+              React Flow · expand · select
+            </text>
+            <text x="772" y="336" class="small">
+              components/command-map.tsx
+            </text>
+          </g>
+          <g>
+            <rect x="435" y="460" width="240" height="110" rx="14" />
+            <text x="456" y="491" class="heading">Task inspector</text>
+            <text x="456" y="518" class="small">Steps · sources · proof</text>
+            <text x="456" y="541" class="small">components/task-panel.tsx</text>
+          </g>
+          <g>
+            <rect x="750" y="460" width="290" height="110" rx="14" />
+            <text x="772" y="491" class="heading">Today and progress</text>
+            <text x="772" y="518" class="small">
+              Up to 3 ready tasks · verified work
+            </text>
+            <text x="772" y="541" class="small">
+              components/workspace-views.tsx
+            </text>
+          </g>
+          <text x="741" y="414" class="small">
+            Same records and domain rules across views.
+          </text>
+        </svg>
+      </div>
+      <footer>
+        Arrows show module consumption, not task dependencies. Inspector
+        edits return through the workspace controller. Draft data stays in this
+        browser unless the user exports it. No agent actions run.
+      </footer>
+    </main>
+  </body>
+</html>

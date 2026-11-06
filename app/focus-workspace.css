@@ -1,0 +1,157 @@
+/* Keep the established ODIDE palette; give attention one destination. */
+.odide-app { --muted: #a2adbb; }
+.workspace-sidebar { width: 206px; min-width: 206px; padding: 0 16px; }
+.brand-symbol span { background: #c6d0dc; }
+.brand-period { color: #c6d0dc; }
+.brand-row { height: 82px; }
+.sidebar-workspace-name { margin: 0 8px 34px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.workspace-sidebar .nav-item { min-height: 46px; padding: 12px; font-size: 14px; color: #a6b0bd; transition: none; border: 1px solid transparent; }
+.workspace-sidebar .nav-item.active { color: #eef3f9; background: #242c35; border-color: #333f4b; }
+.workspace-sidebar .nav-item.active::before { display: none; }
+.nav-current-arrow { margin-left: auto; color: #b4bfcc; }
+.sidebar-bottom { margin-top: auto; }
+.sidebar-storage-note { margin: 20px 8px; color: #9aa6b4; font-size: 12px; line-height: 1.7; }
+.sidebar-person { margin: 0 8px 23px; padding-top: 20px; font-size: 14px; }
+.sidebar-person small { font-size: 12px; color: #9aa6b4; }
+.topbar { height: 66px; min-height: 66px; padding: 0 30px; background: #101419; }
+.breadcrumb, .breadcrumb strong { font-size: 13px; }
+.topbar-actions { gap: 10px; }
+.search-wrap { width: 215px; height: 38px; background: #151a20; }
+.search-wrap input { font-size: 13px; }
+.search-wrap kbd { font-size: 11px; color: #a2adbb; }
+.search-results { overscroll-behavior: contain; }
+.search-results-label { font-size: 11px; }
+.search-results button > span:first-child { flex: 1; }
+.search-results small { font-size: 12px; }
+.button-primary, .button-secondary, .button-quiet { font-size: 13px; min-height: 38px; border-radius: 8px; }
+.button-primary { background: #7dacfa; border-color: #8ab6ff; color: #101b2c; box-shadow: none; font-weight: 650; }
+.button-secondary { background: #171e26; border-color: #34404d; color: #cbd4de; }
+.button-quiet { color: #afbcca; }
+.icon-button { width: 36px; min-width: 36px; height: 36px; }
+.statusbar { height: 35px; min-height: 35px; font-size: 11px; color: #a4aebb; }
+.statusbar button { font-size: 11px; }
+.statusbar .save-dot { background: #8e9aa9; }
+.statusbar .save-dot.error { background: var(--red); }
+.start-view { flex: 1; min-width: 0; overflow: auto; overscroll-behavior: contain; padding: clamp(34px, 5vh, 60px) 40px 30px; }
+.start-content { width: 100%; max-width: 740px; margin: 0 auto; }
+.start-heading { margin-bottom: 30px; }
+.start-heading h1 { font-size: clamp(30px, 3.1vw, 40px); font-weight: 600; letter-spacing: -1.2px; line-height: 1.15; }
+.start-heading h1 span { color: inherit; }
+.start-heading p { max-width: 520px; margin-top: 12px; font-size: 14px; line-height: 1.65; color: var(--muted); }
+.next-task { border: 1px solid #4b6a91; border-left: 3px solid var(--blue); border-radius: 14px; background: #171f29; padding: 28px 30px 28px 28px; }
+.next-task-status { display: flex; align-items: center; gap: 9px; font-size: 13px; color: #c2d8f7; margin-bottom: 16px; }
+.focus-indicator { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.next-task h2 { font-size: clamp(23px, 2.6vw, 30px); font-weight: 600; line-height: 1.3; letter-spacing: -.65px; max-width: 620px; text-wrap: balance; }
+.next-task-why { font-size: 14px; color: #b9c6d5; margin-top: 14px; line-height: 1.65; max-width: 580px; }
+.next-step-preview { margin: 22px 0; padding: 17px 0 0; border-top: 1px solid #354251; }
+.next-step-preview > span { display: block; color: #a4b1c1; font-size: 12px; margin-bottom: 8px; }
+.next-step-preview p { font-size: 15px; line-height: 1.6; color: #e6edf5; }
+.next-task-action { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.focus-primary { min-height: 44px; padding: 11px 14px 11px 17px; gap: 14px; font-size: 14px; }
+.next-task-action small { font-size: 12px; line-height: 1.55; max-width: 220px; color: #a9b7c8; }
+.next-task-waiting { background: #211e19; border-color: #7e6844; border-left-color: var(--amber); }
+.next-task-waiting .next-task-status { color: var(--amber); }
+.next-task-empty { background: var(--surface); border-color: #34404c; }
+.next-task-empty .focus-primary { margin-top: 24px; }
+.task-context { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 9px; padding: 18px 2px 0; font-size: 13px; line-height: 1.6; }
+.task-context > span { color: #9facbb; }
+.task-context > p { color: #c9d3df; }
+.start-secondary { display: flex; flex-direction: column; gap: 0; margin-top: 30px; border-top: 1px solid var(--border); }
+.other-tasks > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: #c0cbd8; font-size: 14px; padding: 17px 0; min-height: 48px; }
+.other-tasks > summary::-webkit-details-marker { display: none; }
+.other-tasks[open] > summary svg { rotate: 180deg; }
+.other-tasks > div { display: grid; padding-bottom: 12px; }
+.other-tasks button { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 13px 12px; font-size: 14px; line-height: 1.55; color: #c8d3df; border-radius: 8px; }
+.other-tasks button svg { flex-shrink: 0; }
+.open-map-link { display: flex; align-items: center; gap: 10px; color: #aebdce; font-size: 14px; min-height: 46px; padding: 12px 0; align-self: flex-start; }
+.start-goal { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 13px; color: #a7b3c1; line-height: 1.6; }
+.start-goal > span { font-size: 12px; color: #94a2b3; }
+.start-goal p { margin-top: 5px; }
+.single-task-shell { flex: 1; min-width: 0; width: 100%; overflow: auto; padding: 24px 38px 40px; overscroll-behavior: contain; }
+.single-task-nav { max-width: 740px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.single-task-nav .button-quiet { padding: 8px 0; }
+.single-task-shell .task-panel { position: static; width: 100%; max-width: 740px; min-width: 0; height: auto; overflow: visible; margin: 0 auto; border: 1px solid #384758; border-radius: 14px; background: var(--surface); box-shadow: none; }
+.single-task-shell .panel-top { padding-top: 24px; }
+.single-task-shell .panel-title { font-size: 28px; line-height: 1.3; }
+.single-task-shell .panel-body { overflow: visible; }
+.single-task-shell .panel-footer { position: static; border-radius: 0 0 14px 14px; padding-bottom: 24px; }
+.roadmap-heading { padding: 25px 30px 19px; }
+.roadmap-heading h1 { font-size: 28px; }
+.roadmap-heading h1 > span { color: inherit; }
+.roadmap-heading p { font-size: 13px; max-width: 580px; line-height: 1.6; }
+.mode-tabs > button { min-height: 36px; font-size: 12px; }
+.mode-tabs > button.active { background: #2b3440; color: #f0f3f7; box-shadow: none; }
+.business-select { min-height: 36px; }
+.business-select select { font-size: 12px; }
+.business-indicator.itad, .business-indicator.device-care { background: #a4b0bf; }
+.map-toolbar { padding-bottom: 16px; }
+.content-view .section-label { font-size: 12px; }
+.content-view .view-intro p { font-size: 14px; line-height: 1.65; }
+.content-view .guide-card p, .content-view .settings-section > p { font-size: 14px; }
+summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 5px; }
+@media (hover: hover) and (pointer: fine) {
+  .button-primary:not(:disabled):hover { background: #97bfff; border-color: #a7c9ff; color: #101b2c; }
+  .workspace-sidebar .nav-item:hover { background: #20272f; color: #eef3f9; }
+  .other-tasks button:hover { background: #1c242e; }
+  .open-map-link:hover { color: #e9f1fa; }
+}
+@media (hover: none), (pointer: coarse) {
+  .workspace-sidebar .nav-item:hover { background: transparent; color: #a6b0bd; }
+  .workspace-sidebar .nav-item.active:hover { background: #242c35; color: #eef3f9; }
+  .button-primary:not(:disabled):hover { background: #7dacfa; color: #101b2c; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .focus-primary { transition: scale 150ms ease-out, background-color 100ms ease-out; }
+  .focus-primary:not(:disabled):active { scale: .96; }
+  .focus-primary:focus-visible:active { scale: 1; }
+}
+@media (max-width: 1100px) {
+  .workspace-sidebar { width: 190px; min-width: 190px; }
+  .start-view { padding: 32px 30px; }
+  .single-task-shell { padding: 22px 28px 32px; }
+}
+@media (max-width: 760px) {
+  .workspace-sidebar { width: 240px; min-width: 240px; visibility: hidden; transition: none; }
+  .workspace-sidebar.mobile-open { visibility: visible; }
+  .topbar { padding: 0 18px; }
+  .search-wrap { width: 185px; height: 44px; }
+  .search-results { right: 0; }
+  .topbar-actions .add-node-button { width: 44px; height: 44px; min-width: 44px; }
+  .topbar .mobile-only, .workspace-sidebar .mobile-only { width: 44px; height: 44px; min-width: 44px; }
+  .start-view { padding: 28px 22px 32px; }
+  .start-heading h1 { font-size: 33px; }
+  .next-task { padding: 23px 22px; }
+  .next-task h2 { font-size: 26px; }
+  .single-task-shell { padding: 18px 20px 30px; }
+  .single-task-shell .panel-title { font-size: 26px; }
+  .roadmap-heading { padding: 23px 22px 18px; }
+  .roadmap-heading h1 { font-size: 26px; }
+  .statusbar .draft-status, .statusbar .status-separator { display: none; }
+  .map-toolbar { padding-left: 20px; padding-right: 20px; }
+}
+@media (max-width: 480px) {
+  .breadcrumb { gap: 9px; }
+  .breadcrumb > span, .breadcrumb > svg { display: none; }
+  .breadcrumb strong { font-size: 13px; }
+  .search-wrap { width: 130px; }
+  .search-results { position: fixed; top: 74px; left: 16px; right: 16px; width: auto; max-height: calc(100dvh - 106px); }
+  .start-heading { margin-bottom: 24px; }
+  .start-heading p { font-size: 14px; }
+  .start-view { padding: 28px 17px; }
+  .next-task { padding: 23px 20px; }
+  .next-task h2 { font-size: 25px; }
+  .next-task-action { gap: 12px; }
+  .next-task-action small { max-width: none; }
+  .single-task-shell { padding: 15px 12px 24px; }
+  .single-task-nav { gap: 8px; padding: 0 5px; }
+  .single-task-nav .button-quiet { font-size: 12px; }
+  .single-task-shell .panel-title { font-size: 24px; }
+  .statusbar { padding-inline: 15px; }
+  .roadmap-heading p { font-size: 12px; }
+  .mode-tabs > button { font-size: 11px; }
+}
+@media (forced-colors: active) {
+  .next-task, .single-task-shell .task-panel, .workspace-sidebar .nav-item.active { border: 2px solid CanvasText; }
+  .focus-indicator { background: Highlight; }
+  .button-primary { border: 2px solid ButtonText; }
+}
