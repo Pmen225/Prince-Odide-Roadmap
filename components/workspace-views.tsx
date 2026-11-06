@@ -16,6 +16,7 @@ import {
   Target,
 } from "lucide-react";
 import { getBlockers, getProgress, type WorkItem } from "@/lib/work-model";
+import { EvidenceLedger } from "@/components/evidence-ledger";
 
 export function TodayView({
   items,
@@ -246,6 +247,7 @@ export function SourcesView({
           </div>
         ))}
       </div>
+      <EvidenceLedger items={items} onSelect={onSelect} />
     </section>
   );
 }

@@ -3,14 +3,12 @@ import "./globals.css";
 import "./task-panel-focus.css";
 import "./command-map-focus.css";
 import "./focus-workspace.css";
+import "./agent-playbook.css";
 
 export const metadata: Metadata = {
   title: "ODIDE — The business, connected",
   description:
     "A clear path from the next step to the bigger picture. Your ODIDE visual roadmap.",
-  other: {
-    "codex-preview": "development",
-  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

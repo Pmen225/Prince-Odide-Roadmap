@@ -34,6 +34,8 @@ import {
   isVerified,
   type WorkItem,
 } from "@/lib/work-model";
+import { getPlaybook } from "@/lib/agent-playbooks";
+import { AgentPlaybook } from "@/components/agent-playbook";
 
 type TaskPanelProps = {
   item: WorkItem;
@@ -44,10 +46,11 @@ type TaskPanelProps = {
   onAddChild: (parentId: string) => void;
 };
 
-type PanelTab = "overview" | "steps" | "evidence";
+type PanelTab = "overview" | "instructions" | "steps" | "evidence";
 
 const tabs: { id: PanelTab; label: string }[] = [
   { id: "overview", label: "Overview" },
+  { id: "instructions", label: "How to do it" },
   { id: "steps", label: "Steps" },
   { id: "evidence", label: "Proof" },
 ];
@@ -90,6 +93,9 @@ function TaskPanelContent({
   const [evidenceTitle, setEvidenceTitle] = useState("");
   const [evidenceUrl, setEvidenceUrl] = useState("");
   const [formError, setFormError] = useState("");
+  const playbook = getPlaybook(item.id);
+  const visibleTabs = tabs.filter((tab) => tab.id !== "instructions" || playbook);
+  const primaryActionClass = activeTab === "instructions" ? "button-secondary" : "button-primary";
   const children = getChildren(item.id, items);
   const blockers = getBlockers(item, items);
   const verified = isVerified(item, items);
@@ -186,14 +192,14 @@ function TaskPanelContent({
 
   function moveTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     let nextIndex = index;
-    if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % visibleTabs.length;
     else if (event.key === "ArrowLeft")
-      nextIndex = (index + tabs.length - 1) % tabs.length;
+      nextIndex = (index + visibleTabs.length - 1) % visibleTabs.length;
     else if (event.key === "Home") nextIndex = 0;
-    else if (event.key === "End") nextIndex = tabs.length - 1;
+    else if (event.key === "End") nextIndex = visibleTabs.length - 1;
     else return;
     event.preventDefault();
-    setActiveTab(tabs[nextIndex].id);
+    setActiveTab(visibleTabs[nextIndex].id);
     const nextButton =
       event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>(
         "[role='tab']",
@@ -299,11 +305,11 @@ function TaskPanelContent({
       </div>
 
       <div
-        className="panel-tabs"
+        className={`panel-tabs${playbook ? " has-agent-tab" : ""}`}
         role="tablist"
         aria-label="Work item information"
       >
-        {tabs.map((tab, index) => (
+        {visibleTabs.map((tab, index) => (
           <button
             key={tab.id}
             id={`${panelId}-tab-${tab.id}`}
@@ -379,20 +385,26 @@ function TaskPanelContent({
                       </button>
                     ))}
                   </div>
-                  <button className="panel-step-link" type="button" onClick={() => openTab("steps")}>
-                    See this task’s steps <ArrowRight size={16} aria-hidden="true" />
+                  <button className="panel-step-link" type="button" onClick={() => openTab(playbook ? "instructions" : "steps")}>
+                    {playbook ? "See how to do it" : "See this task’s steps"} <ArrowRight size={16} aria-hidden="true" />
                   </button>
                 </>
               ) : (
                 <>
                   <p>{nextStep?.text ?? (item.steps.length ? "The steps are checked. Add a link to the result, then review it." : "Add the first action this task needs.")}</p>
-                  <button className="panel-step-link" type="button" onClick={() => openTab(nextStep || !item.steps.length ? "steps" : "evidence")}>
-                    {nextStep ? "See all steps" : item.steps.length ? "Review proof" : "Add a step"}
+                  <button className="panel-step-link" type="button" onClick={() => openTab(playbook ? "instructions" : nextStep || !item.steps.length ? "steps" : "evidence")}>
+                    {playbook ? "How to do it" : nextStep ? "See all steps" : item.steps.length ? "Review proof" : "Add a step"}
                     <ArrowRight size={16} aria-hidden="true" />
                   </button>
                 </>
               )}
             </section>
+
+            {playbook && (inactive || verified) && (
+              <button className="button-secondary panel-agent-reference" type="button" onClick={() => openTab("instructions")}>
+                Read agent instructions <ArrowRight size={15} aria-hidden="true" />
+              </button>
+            )}
 
             <dl className="panel-task-context">
               <div>
@@ -781,6 +793,10 @@ function TaskPanelContent({
           </>
         )}
 
+        {activeTab === "instructions" && playbook && (
+          <AgentPlaybook item={item} items={items} onSelect={onSelect} onReviewProof={() => openTab("evidence")} />
+        )}
+
         {activeTab === "steps" && (
           <>
             <section className="detail-section">
@@ -1001,7 +1017,7 @@ function TaskPanelContent({
         {!item.approved ? (
           <>
             <button
-              className="button-primary"
+              className={primaryActionClass}
               type="button"
               disabled={inactive}
               onClick={() => onUpdate(item.id, { approved: true })}
@@ -1016,7 +1032,7 @@ function TaskPanelContent({
           <>
             {item.status === "not-started" && children.length === 0 && (
               <button
-                className="button-primary"
+                className={primaryActionClass}
                 type="button"
                 disabled={blockers.length > 0}
                 onClick={() => onUpdate(item.id, { status: "in-progress" })}
@@ -1037,7 +1053,7 @@ function TaskPanelContent({
             {item.status === "in-progress" && (
               <>
                 <button
-                  className="button-primary"
+                  className={primaryActionClass}
                   type="button"
                   onClick={() => onUpdate(item.id, { status: "done" })}
                 >
