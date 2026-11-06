@@ -1,0 +1,317 @@
+/* Colour marks state, not the business a card belongs to. */
+.map-canvas .map-node,
+.map-canvas .map-node.kind-goal {
+  color: var(--foreground);
+  background: var(--raised);
+  border: 1px solid #3b434d;
+  border-radius: 12px;
+  box-shadow: none;
+  transition: none;
+}
+
+.map-canvas .lucide > * {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5px;
+}
+
+.map-canvas .map-node.kind-goal {
+  padding: 13px 16px;
+}
+
+.map-canvas .node-eyebrow {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-weight: 500;
+  text-transform: none;
+  color: #a4aebc;
+}
+
+.map-canvas .node-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.15px;
+  margin-top: 6px;
+  padding-right: 8px;
+}
+
+.map-canvas .kind-goal .node-title {
+  font-size: 16px;
+  line-height: 1.22;
+  letter-spacing: -0.3px;
+  -webkit-line-clamp: 3;
+}
+
+.map-canvas .node-bottom,
+.map-canvas .kind-goal .node-bottom {
+  left: 16px;
+  right: 16px;
+  bottom: 11px;
+}
+
+.map-canvas .node-status,
+.map-canvas .node-owner {
+  color: #acb5c1;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.map-canvas .node-status.status-blocked {
+  color: var(--amber);
+}
+
+.map-canvas .node-status.status-verified {
+  color: var(--green);
+}
+
+.map-canvas .node-expand {
+  height: 30px;
+  min-width: 30px;
+  top: calc(50% - 15px);
+  right: -15px;
+  padding: 0 5px;
+  border: 1px solid #535d6a;
+  border-radius: 8px;
+  background: #222930;
+  color: #c2cad4;
+  font-size: 10px;
+  transition: none;
+}
+
+.map-canvas .map-node.is-selected,
+.map-canvas .map-node.is-focus {
+  border-color: var(--blue);
+  background: #1c2c40;
+  box-shadow: 0 0 0 1px #83b5ff30;
+}
+
+.map-canvas .is-focus::before {
+  display: none;
+}
+
+.map-canvas .is-selected .node-eyebrow,
+.map-canvas .is-focus .node-eyebrow {
+  color: #c4dbfb;
+}
+
+.map-canvas .react-flow__handle {
+  background: #76808c !important;
+  opacity: 0.8;
+}
+
+.map-canvas .react-flow__edge-path {
+  transition: none;
+}
+
+.map-canvas .map-caption {
+  left: 22px;
+  top: 18px;
+  max-width: calc(100% - 44px);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #a5afbc;
+  padding: 4px 0;
+  background: var(--background);
+}
+
+.map-canvas .map-caption > svg {
+  flex: 0 0 auto;
+}
+
+.map-canvas .map-controls {
+  left: 22px;
+  bottom: 22px;
+  height: 38px;
+  border-color: #3b434d;
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.map-canvas .map-controls button {
+  min-height: 36px;
+  padding: 9px 10px;
+  color: #b8c2ce;
+  transition: none;
+  scale: 1;
+}
+
+.map-canvas .map-controls > span {
+  color: #adb7c4;
+  font-size: 11px;
+  border-color: var(--border);
+  font-variant-numeric: tabular-nums;
+}
+
+.map-canvas .map-controls .fit-label {
+  font-size: 11px;
+}
+
+.map-colour-key {
+  position: absolute;
+  z-index: 5;
+  right: 22px;
+  bottom: 22px;
+  color: #acb5c1;
+  font-size: 12px;
+}
+
+.map-colour-key > summary {
+  min-height: 38px;
+  padding: 11px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: var(--background);
+  list-style-position: inside;
+}
+
+.map-colour-key > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.map-key-items {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 268px;
+  max-width: calc(100vw - 44px);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid #3b434d;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px #0004;
+  line-height: 1.4;
+}
+
+.map-key-items > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.map-key-items > span > svg {
+  flex: 0 0 auto;
+}
+
+.map-key-items > p {
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.key-focus { color: var(--blue); }
+.key-waiting { color: var(--amber); }
+.key-verified { color: var(--green); }
+
+.map-canvas .map-error {
+  top: 62px;
+  width: min(460px, calc(100% - 40px));
+  max-width: none;
+  max-height: calc(100% - 138px);
+  padding: 16px;
+  background: var(--surface);
+  color: var(--foreground);
+  border-color: var(--border);
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.map-fallback-list {
+  padding: 0;
+  margin: 12px 0 0;
+  list-style: none;
+}
+
+.map-fallback-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+
+.map-fallback-list button > svg {
+  flex: 0 0 auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .map-canvas .map-node:not(.is-selected):not(.is-focus):hover {
+    background: #232b34;
+    border-color: #788391;
+  }
+
+  .map-canvas .map-node.is-selected:hover,
+  .map-canvas .map-node.is-focus:hover {
+    background: #1f3045;
+    border-color: var(--blue);
+  }
+
+  .map-canvas .node-expand:hover,
+  .map-canvas .map-controls button:hover {
+    background: #303944;
+    color: var(--foreground);
+  }
+
+  .map-colour-key > summary:hover {
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .map-canvas .node-expand:hover,
+  .map-canvas .map-controls button:hover {
+    background: var(--surface);
+    color: #b8c2ce;
+  }
+
+  .map-canvas .node-expand {
+    min-width: 44px;
+    height: 44px;
+    right: -22px;
+    top: calc(50% - 22px);
+  }
+
+  .map-canvas .map-controls { height: 46px; }
+  .map-canvas .map-controls button { min-width: 44px; min-height: 44px; }
+  .map-colour-key > summary { min-height: 44px; }
+}
+
+@media (max-width: 600px) {
+  .map-canvas .map-caption {
+    left: 16px;
+    max-width: calc(100% - 32px);
+    top: 12px;
+    font-size: 11px;
+  }
+
+  .map-canvas .map-controls { left: 16px; bottom: 16px; }
+  .map-colour-key { right: 12px; bottom: 16px; font-size: 11px; }
+  .map-colour-key > summary { padding-inline: 8px; }
+  .map-canvas .map-controls .fit-label { display: none; }
+}
+
+@media (forced-colors: active) {
+  .map-canvas .map-node,
+  .map-canvas .node-expand,
+  .map-canvas .map-controls,
+  .map-key-items {
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+
+  .map-canvas .map-node.is-selected,
+  .map-canvas .map-node.is-focus {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

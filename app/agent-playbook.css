@@ -1,0 +1,185 @@
+/* Readable execution instructions. One primary action; all reference surfaces neutral. */
+.agent-playbook {
+  min-width: 0;
+  color: var(--panel-copy, var(--foreground));
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.agent-playbook h3,
+.agent-playbook h4,
+.agent-playbook strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.agent-playbook h3 { font-size: 16px; line-height: 1.5; }
+.agent-playbook h4 { font-size: 14px; line-height: 1.5; }
+.agent-playbook p + p { margin-top: 8px; }
+.agent-playbook .agent-note { color: var(--panel-secondary, var(--muted)); font-size: 13px; line-height: 1.6; }
+
+.agent-handoff-header {
+  padding-bottom: 22px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.agent-handoff-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3px 12px;
+  margin-bottom: 10px;
+  color: var(--panel-secondary, var(--muted));
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.agent-handoff-meta > span { display: inline-flex; gap: 5px; align-items: center; }
+.agent-handoff-header > p { margin-top: 7px; }
+.task-panel .agent-copy-button { width: 100%; min-height: 44px; margin-top: 16px; justify-content: center; }
+.agent-copy-status { color: var(--foreground); font-size: 13px; min-height: 0; }
+.agent-copy-status:empty { display: none; }
+.agent-workflow-brief { margin-top: 16px; }
+.agent-workflow-warnings { margin-top: 12px; font-size: 13px; }
+.agent-workflow-text { margin-top: 16px; }
+.agent-workflow-brief > .agent-section-body { padding-bottom: 0; }
+
+.agent-guardrails {
+  padding: 13px 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--panel-secondary, var(--muted));
+  border-radius: 8px;
+  background: var(--raised);
+  font-size: 13px;
+}
+
+.agent-procedure { margin-bottom: 24px; }
+.agent-procedure > .agent-note { margin-top: 6px; }
+.agent-procedure-list { margin: 14px 0 0; padding: 0; list-style: none; }
+.agent-procedure-list > li + li { margin-top: 7px; }
+.agent-instruction {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+.agent-instruction > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 51px;
+  padding: 12px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 8px;
+  color: var(--panel-copy, var(--foreground));
+  font-weight: 500;
+  line-height: 1.5;
+}
+.agent-instruction > summary > span:nth-child(2) { flex: 1; min-width: 0; }
+.agent-instruction > summary > svg { flex: 0 0 auto; }
+.agent-step-number {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--panel-secondary, var(--muted));
+}
+.agent-instruction[open] > summary { color: var(--foreground); }
+.agent-instruction-body { padding: 2px 15px 16px; }
+.agent-tool { margin-top: 5px; font-size: 13px; color: var(--panel-secondary, var(--muted)); }
+.agent-tool strong { display: block; margin-bottom: 3px; }
+.agent-action-list, .agent-list { margin: 11px 0 0; padding-inline-start: 20px; }
+.agent-action-list > li + li, .agent-list > li + li { margin-top: 10px; }
+.agent-list { list-style: disc; }
+.agent-action-list { list-style: decimal; }
+.agent-step-check { margin-top: 17px; padding-top: 13px; border-top: 1px solid var(--border); font-size: 13px; }
+.agent-step-check > p { margin-top: 4px; }
+
+.agent-section { border-top: 1px solid var(--border); }
+.agent-section > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 51px;
+  padding: 11px 0;
+  list-style: none;
+  cursor: pointer;
+  color: var(--panel-secondary, var(--muted));
+  font-size: 13px;
+  line-height: 1.5;
+}
+.agent-section > summary > svg { flex: 0 0 auto; }
+.agent-section > summary small { margin-inline-start: 5px; font-size: 12px; }
+.agent-section[open] > summary { color: var(--foreground); }
+.agent-section[open] > summary > svg, .agent-instruction[open] > summary > svg { transform: rotate(90deg); }
+.agent-section > summary::-webkit-details-marker, .agent-instruction > summary::-webkit-details-marker { display: none; }
+.agent-section > summary:focus-visible, .agent-instruction > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.agent-section-body { padding: 3px 0 20px; }
+.agent-section-body > h4 { margin-top: 20px; }
+.agent-section-body > .button-secondary { margin-top: 15px; min-height: 40px; }
+.agent-section-body > .agent-note { margin-top: 12px; }
+.agent-section-body > .agent-note:first-child { margin-top: 0; }
+.agent-facts { display: grid; gap: 14px; margin: 0; }
+.agent-facts dt { color: var(--foreground); font-size: 13px; font-weight: 600; }
+.agent-facts dd { margin: 4px 0 0; }
+.agent-resource { margin-top: 19px; padding-top: 18px; border-top: 1px solid var(--border); }
+.agent-resource > h4 { margin-bottom: 12px; }
+.agent-decision + .agent-decision { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+.agent-decision > h4 { margin-bottom: 7px; }
+.agent-dependency-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.agent-task-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  margin-top: 6px;
+  text-align: left;
+  color: var(--panel-copy, var(--foreground));
+  font-size: 13px;
+  line-height: 1.5;
+}
+.agent-task-link > span { flex: 1; min-width: 0; }
+.agent-task-link > svg { flex: 0 0 auto; }
+.agent-task-link small { display: block; color: var(--panel-secondary, var(--muted)); margin-top: 4px; font-size: 12px; }
+.agent-playbook code { font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.agent-playbook .agent-brief-text {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  resize: vertical;
+  max-height: 65vh;
+  min-height: 220px;
+  overscroll-behavior: contain;
+  font-size: 12px;
+  line-height: 1.65;
+  border-color: #6e7d90;
+}
+.task-panel .panel-tabs.has-agent-tab button { padding-inline: 5px; font-size: 12px; }
+.task-panel .panel-agent-reference { margin-top: 15px; min-height: 40px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .agent-section > summary:hover, .agent-task-link:not(:disabled):hover { color: var(--foreground); }
+  .agent-instruction > summary:hover { background: var(--raised); color: var(--foreground); }
+}
+
+/* Routine tab/disclosure changes stay instant; pointer press alone gets feedback. */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .agent-playbook button { transition: scale 150ms ease-out; }
+  .agent-playbook button:not(:disabled):not(:focus-visible):active { scale: 0.96; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-playbook button, .agent-playbook summary, .agent-playbook summary > svg { transition: none; animation: none; }
+}
+@media (forced-colors: active) {
+  .agent-instruction, .agent-guardrails, .agent-step-number, .agent-brief-text { border-color: CanvasText; }
+}

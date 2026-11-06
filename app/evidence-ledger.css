@@ -1,0 +1,137 @@
+.evidence-ledger {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  color: var(--foreground);
+}
+.evidence-ledger-heading h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.evidence-ledger-heading p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.evidence-ledger-heading { margin-bottom: 18px; }
+.evidence-ledger-method,
+.evidence-ledger-list { border-bottom: 1px solid var(--border); }
+.evidence-ledger summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.evidence-ledger summary::-webkit-details-marker { display: none; }
+.evidence-ledger summary > svg { flex-shrink: 0; margin-left: auto; }
+.evidence-ledger details[open] > summary > svg { transform: rotate(180deg); }
+.evidence-ledger > details > summary { font-weight: 600; }
+.evidence-ledger-summary-meta { margin-left: auto; color: var(--muted); font-weight: 400; }
+.evidence-ledger summary .evidence-ledger-summary-meta + svg { margin-left: 0; }
+.evidence-ledger-method-body { padding: 0 0 18px; }
+.evidence-ledger-method-body ol { margin: 0; padding-left: 22px; }
+.evidence-ledger-method-body li {
+  margin: 8px 0;
+  padding-left: 4px;
+  color: #b9c4d2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.evidence-ledger-method-body strong { color: var(--foreground); font-weight: 500; }
+.evidence-ledger-list-body { padding: 8px 0 18px; }
+.evidence-ledger-filters { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 0.7fr); gap: 14px; }
+.evidence-ledger-filters label { display: grid; gap: 8px; color: #c0cbd8; font-size: 12px; }
+.evidence-ledger-filters input,
+.evidence-ledger-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #647184;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 13px;
+}
+.evidence-ledger-filters input::placeholder { color: #a2adbb; }
+.evidence-ledger-filter-status { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; }
+.evidence-ledger-filter-status p,
+.evidence-ledger-caveat { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.evidence-ledger-filter-status button {
+  min-height: 44px;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--blue);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.evidence-ledger-caveat { padding: 0 0 16px; }
+.evidence-ledger-records { list-style: none; margin: 0; padding: 0; }
+.evidence-ledger-record { padding: 24px 0; border-top: 1px solid var(--border); }
+.evidence-ledger-record-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.evidence-ledger-record-meta strong { color: #c9d3df; font-weight: 600; font-variant-numeric: tabular-nums; }
+.evidence-ledger-record-meta time { margin-left: auto; white-space: nowrap; }
+.evidence-ledger-record h3 { margin: 8px 0 10px; font-size: 15px; font-weight: 500; line-height: 1.5; }
+.evidence-ledger-record h3 a { display: inline-flex; align-items: flex-start; gap: 8px; color: var(--foreground); text-decoration: underline; text-decoration-color: #647184; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.evidence-ledger-record h3 a svg { flex-shrink: 0; margin-top: 3px; color: var(--muted); }
+.evidence-ledger-record blockquote { margin: 12px 0; padding: 0 0 0 14px; border-left: 2px solid #647184; color: #d9e2ee; font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; }
+.evidence-ledger-source-type { margin: 8px 0 4px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.evidence-ledger-record-detail summary { justify-content: flex-start; gap: 10px; color: #c0cbd8; }
+.evidence-ledger-record-detail summary > svg { margin-left: 0; }
+.evidence-ledger-record-detail > div { padding: 2px 0 0; }
+.evidence-ledger-record-detail p { margin: 0 0 12px; color: #b9c4d2; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.evidence-ledger-record-detail strong { color: var(--foreground); font-weight: 500; }
+.evidence-ledger-task-links { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin: 8px 0 12px; }
+.evidence-ledger-task-links button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 7px 8px 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--blue);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.evidence-ledger-task-links button svg { flex-shrink: 0; }
+.evidence-ledger-task-links > span { padding: 8px 0; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.evidence-ledger-empty { padding: 20px 0; margin: 0; color: #c0cbd8; font-size: 13px; line-height: 1.6; }
+.evidence-ledger :is(summary, a, button, input, select):focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 4px; }
+.evidence-ledger button:not(:disabled):active { background: #222d3b; }
+@media (hover: hover) and (pointer: fine) {
+  .evidence-ledger summary:hover { color: var(--blue); }
+  .evidence-ledger-record h3 a:hover { color: var(--blue); text-decoration-color: currentColor; }
+  .evidence-ledger button:hover { background: #1d2734; }
+}
+@media (max-width: 760px) {
+  .evidence-ledger-filters { grid-template-columns: minmax(0, 1fr); }
+  .evidence-ledger-summary-meta { display: none; }
+}
+@media (max-width: 480px) {
+  .evidence-ledger-record-meta { gap: 5px 10px; }
+  .evidence-ledger-record-meta time { margin-left: 0; }
+}
+@media (forced-colors: active) {
+  .evidence-ledger-filters input,
+  .evidence-ledger-filters select,
+  .evidence-ledger-task-links button { border-color: ButtonText; }
+  .evidence-ledger-record blockquote { border-color: CanvasText; }
+  .evidence-ledger :is(summary, a, button, input, select):focus-visible { outline-color: Highlight; }
+}
