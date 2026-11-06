@@ -6,6 +6,7 @@ import {
   parseImport,
   exportDraft,
   DRAFT_KEY,
+  CURRENT_SEED_PLAN_VERSION,
 } from "../lib/storage.ts";
 import type { WorkItem } from "../lib/work-model.ts";
 
@@ -76,4 +77,41 @@ test("export and import round trip; bad schema, script URLs and large input fail
     ),
   );
   assert.throws(() => parseImport("x".repeat(2_000_001)), /large/i);
+});
+
+test("legacy draft envelopes remain readable and new drafts record the current plan", () => {
+  const legacyStorage = memory();
+  legacyStorage.setItem(DRAFT_KEY, JSON.stringify({ version: 1, revision: 1, savedAt: "2026-11-06T12:00:00.000Z", items: [item] }));
+  assert.equal(readDraft(legacyStorage)!.seedPlanVersion, undefined);
+  assert.deepEqual(readDraft(legacyStorage)!.items, [item]);
+  const newStorage = memory();
+  writeDraft(newStorage, [item], 0);
+  assert.equal(readDraft(newStorage)!.seedPlanVersion, CURRENT_SEED_PLAN_VERSION);
+  assert.equal(JSON.parse(exportDraft([item])).seedPlanVersion, CURRENT_SEED_PLAN_VERSION);
+});
+
+test("migration version survives edits and deletion without changing conflict checks", () => {
+  const storage = memory();
+  writeDraft(storage, [item], 0, 2);
+  assert.equal(readDraft(storage)!.seedPlanVersion, 2);
+  writeDraft(storage, [item], 1, 3);
+  writeDraft(storage, [], 2);
+  assert.equal(readDraft(storage)!.seedPlanVersion, 3);
+  assert.deepEqual(readDraft(storage)!.items, []);
+  assert.throws(() => writeDraft(storage, [item], 2, 1), /another tab/i);
+  assert.equal(readDraft(storage)!.seedPlanVersion, 3);
+});
+
+test("future seed versions are preserved and invalid metadata cannot replace a draft", () => {
+  const storage = memory();
+  writeDraft(storage, [item], 0, 4);
+  writeDraft(storage, [item], 1);
+  assert.equal(readDraft(storage)!.seedPlanVersion, 4);
+  const before = storage.getItem(DRAFT_KEY);
+  assert.throws(() => writeDraft(storage, [], 2, 0), /plan version/i);
+  assert.equal(storage.getItem(DRAFT_KEY), before);
+  storage.setItem(DRAFT_KEY, JSON.stringify({ version: 1, revision: 3, savedAt: "2026-11-06T12:00:00.000Z", seedPlanVersion: "3", items: [item] }));
+  const invalid = storage.getItem(DRAFT_KEY);
+  assert.throws(() => readDraft(storage), /saved draft/i);
+  assert.equal(storage.getItem(DRAFT_KEY), invalid);
 });

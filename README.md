@@ -16,6 +16,7 @@ A private visual workspace for following business work from its purpose to its p
 - Cycle checks protect the hierarchy and dependency graph.
 - Start here shows one next task. Up to two alternatives stay closed until requested. Approved, unblocked work takes precedence over proposed work.
 - Plain task names, one next step, a reason and a concrete finished result. Task settings and source guidance are closed by default.
+- Customer work comes first: existing replies, eligible follow-ups, a small local demand test, a real job, a checked quote, delivery and payment. No new website, list template or operations manual blocks a buyer conversation.
 - Verified completion needs approved work, finished steps, accepted evidence and verified prerequisites.
 - Cancelled and archived items do not increase completion totals.
 - Browser draft saving, revision checks, JSON export/import and recovery export.
@@ -30,7 +31,7 @@ The proposed roadmap is guided by both user-selected sources:
 - [Alex Hormozi — full course](https://github.com/Pmen225/Junior-Built-skills/tree/main/skills/alex-hormozi-full-course): offer sequence, economic checks and continuity.
 - [Alex Hormozi — YouTube skill](https://github.com/Pmen225/hormozi-youtube-channel-skill): lead generation, sales and verified delegation.
 
-Task source links include relevant chapters and selected timestamped videos. These applications are proposals; they are not evidence of current ODIDE facts. Source libraries stay at their original locations. This repository does not contain full course transcripts or private Notion records.
+Task source links identify the relevant chapters. The YouTube skill shapes contact, qualification and follow-up; Money Models shapes the scoped quote, direct-cost check, cash timing and useful repeat work. These applications are proposals; they are not evidence of completed work. Source libraries stay at their original locations. This repository does not contain full course transcripts or private Notion records.
 
 Matt Pocock's implement, TDD, codebase-design and two-axis code-review methods guided the build. The accepted user build plan is the specification; the initial repository main commit is the comparison baseline.
 
@@ -81,7 +82,7 @@ Do not mistake a prototype check for a pass at a later gate.
 - [Machine-readable ownership map](docs/architecture/architecture.json)
 - [Release boundary and checks](docs/release-boundary.md)
 
-One domain module owns completion, blockers, priorities and relationship validation. The map, inspector and Start here queue consume those rules. Browser storage validates every saved/imported workspace and rejects a stale revision. A tested copy migration updates only untouched original suggestions; any user edit preserves the whole item.
+One domain module owns completion, blockers, priorities and relationship validation. The map, inspector and Start here queue consume those rules. Browser storage validates every saved/imported workspace and rejects a stale revision. The versioned migration replaces a complete untouched legacy plan. A mixed plan keeps its existing graph and receives separate customer-first suggestions. User edits, approvals and evidence stay intact. A saved migration version prevents deleted tasks returning. Explicit imports are used as supplied.
 
 ## Privacy and safety
 

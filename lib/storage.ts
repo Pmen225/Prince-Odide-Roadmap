@@ -1,13 +1,19 @@
 import { validateWorkspace, type WorkItem } from "./work-model.ts";
 
 export const DRAFT_KEY = "odide.workspace.v1";
+export const CURRENT_SEED_PLAN_VERSION = 3;
 export type DraftStorage = Pick<Storage, "getItem" | "setItem">;
 export type SavedDraft = {
   version: 1;
   revision: number;
   savedAt: string;
+  seedPlanVersion?: number;
   items: WorkItem[];
 };
+
+function validSeedVersion(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 1;
+}
 
 export function readDraft(storage: DraftStorage): SavedDraft | null {
   const raw = storage.getItem(DRAFT_KEY);
@@ -20,13 +26,15 @@ export function readDraft(storage: DraftStorage): SavedDraft | null {
       draft.version !== 1 ||
       !Number.isSafeInteger(draft.revision) ||
       draft.revision! < 1 ||
-      typeof draft.savedAt !== "string"
+      typeof draft.savedAt !== "string" ||
+      (draft.seedPlanVersion !== undefined && !validSeedVersion(draft.seedPlanVersion))
     )
       throw new Error();
     return {
       version: 1,
       revision: draft.revision!,
       savedAt: draft.savedAt,
+      ...(draft.seedPlanVersion === undefined ? {} : { seedPlanVersion: draft.seedPlanVersion }),
       items: validateWorkspace(draft.items),
     };
   } catch {
@@ -40,6 +48,7 @@ export function writeDraft(
   storage: DraftStorage,
   items: WorkItem[],
   expectedRevision: number,
+  seedPlanVersion?: number,
 ): number {
   const checked = validateWorkspace(items);
   const current = readDraft(storage);
@@ -48,6 +57,8 @@ export function writeDraft(
       "Another tab has saved a newer draft. Export your changes, then reload to use the newer version.",
     );
   }
+  const planVersion = seedPlanVersion ?? current?.seedPlanVersion ?? CURRENT_SEED_PLAN_VERSION;
+  if (!validSeedVersion(planVersion)) throw new Error("The seed plan version must be a positive integer.");
   const revision = expectedRevision + 1;
   storage.setItem(
     DRAFT_KEY,
@@ -55,6 +66,7 @@ export function writeDraft(
       version: 1,
       revision,
       savedAt: new Date().toISOString(),
+      seedPlanVersion: planVersion,
       items: checked,
     }),
   );
@@ -65,6 +77,7 @@ export function exportDraft(items: WorkItem[]): string {
   return JSON.stringify(
     {
       version: 1,
+      seedPlanVersion: CURRENT_SEED_PLAN_VERSION,
       exportedAt: new Date().toISOString(),
       items: validateWorkspace(items),
     },

@@ -89,13 +89,13 @@ export function OdideApp() {
       try {
         const saved = readDraft(localStorage);
         if (saved) {
-          const refreshed = refreshSeedCopy(saved.items);
+          const refreshed = refreshSeedCopy(saved.items, saved.seedPlanVersion);
           setItems(refreshed.items);
           itemsRef.current = refreshed.items;
           revision.current = saved.revision;
-          if (refreshed.updatedIds.length) {
-            revision.current = writeDraft(localStorage, refreshed.items, saved.revision);
-            setNotice("Updated untouched suggestions with clearer wording. Your edits were kept.");
+          if (refreshed.updatedIds.length || refreshed.seedPlanVersion !== saved.seedPlanVersion) {
+            revision.current = writeDraft(localStorage, refreshed.items, saved.revision, refreshed.seedPlanVersion);
+            if (refreshed.updatedIds.length) setNotice("Customer-first tasks loaded. Your edits were kept.");
           }
           setSaveState("Saved in this browser");
         }
@@ -558,7 +558,7 @@ export function OdideApp() {
           try {
             if (file.size > 2_000_000)
               throw new Error("This file is too large. The maximum is 2 MB.");
-            setImportItems(refreshSeedCopy(parseImport(await file.text())).items);
+            setImportItems(parseImport(await file.text()));
           } catch (error) {
             setNotice(
               error instanceof Error

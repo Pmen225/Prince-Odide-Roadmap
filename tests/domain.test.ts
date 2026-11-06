@@ -205,7 +205,7 @@ test('workspace limits apply to item counts, nested lists and UTF-8 payload byte
 test('the proposed roadmap imports without invented completion or executable work', () => {
   const items = validateWorkspace(seedItems);
   assert.equal(items.length, seedItems.length);
-  assert.equal(items[0].id, 'odide');
+  assert.equal(items[0].id, 'sales-goal');
   assert.equal(items.every(item => !item.approved && item.origin === 'proposal'), true);
   assert.deepEqual(getProgress(items, 'all'), { verified: 0, total: 0, percent: null });
   assert.deepEqual(getPriorities(items, 'all'), []);

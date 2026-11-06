@@ -10,7 +10,7 @@ function task(id: string, patch: Partial<WorkItem> = {}): WorkItem {
 
 test("first opening has one leading suggestion and at most two alternatives", () => {
   const focus = getStartingPoints(seedItems);
-  assert.equal(focus[0].id, "assets-review");
+  assert.equal(focus[0].id, "sales-01-replies");
   assert.equal(focus.length, 3);
   assert.ok(focus.every((item) => !item.approved && item.dependsOn.length === 0));
 });
